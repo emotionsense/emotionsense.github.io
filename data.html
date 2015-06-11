@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>ES Library Documentation by xsenselabs</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>ES Libraries Documentation</h1>
+        <p>Online documentation:
+	<br /><a href="index.html">Home</a>
+	<br /><a href="sensors.html">What Sensor Data?</a>
+        <br /><a href="android.html">Collecting Sensor Data</a>
+        <br /><a href="format.html">Formatting Sensor Data</a>
+        <br /><a href="data.html">Store/Transfer Data</a>
+	<br /><a href="research.html">Research</a>
+	<br /><a href="https://github.com/xsenselabs">Project Github Page</a></p>
+
+      </header>
+      <section>
+<h1>Storing and Transmitting Data</h1>
+
+<h3>1. Start by Extending an Abstract Data Logger</h3>
+<p>The ES Sensor Data Manager library defines a number of abstract <a href="">logger types</a>; to create a data logger, you need to extend one of these. You can find examples of all of these loggers in the <a href="https://github.com/xsenselabs/DemoDataManager">Demo Project</a>. Select from:
+
+<ol>
+	<li>The <code>AbstractStoreOnlyLogger</code>, which will only store any captured data.
+	<li>The <code>AbstractImmediateTransferLogger</code>, which will attempt to transfer any logged data as soon as it receives it.
+	<li>The <code>AbstractAsyncTransferLogger</code>, which will store data that it receives and then regularly attempt to batch upload compressed files of data.
+</ol>
+
+<p>For example, to create a logger that only stores data, start with: 
+<pre>
+<code>public class MyDataLogger extends AbstractStoreOnlyLogger {
+
+}</code>
+</pre>
+
+<h4>a. Pick a storage type</h4>
+<p>All of the constructors for the logger types require you to specify a storage type. This can be one of:
+<ol>
+	<li><code>DataStorageConfig.STORAGE_TYPE_NONE</code>, if you are using the immediate transfer logger that does not store data.
+	<li><code>DataStorageConfig.STORAGE_TYPE_DB</code> to store the data in a local SQLite database.
+	<li><code>DataStorageConfig.STORAGE_TYPE_FILES</code> to store the data in the file system; your app must have the permission to write to the external storage.
+</ol>
+
+<h4>b. Configure the logger</h4>
+<p>You configure your data logger by implementing the methods you inherit from your abstract logger type. All loggers, regardless of their type, must implement:
+<ol>
+	<li><code>shouldPrintLogMessages()</code>: whether the library should print Log.d messages, for debug purposes.
+	<li><code>getUniqueUserId()</code>: a String that identifies this user.
+	<li><code>getDeviceId()</code>: a String that identifies this device.
+	<li><code>getEncryptionPassword()</code>: a String that will be used to encrypt the data. If this is left as null, the data will not be encrypted.
+</ol>
+<p>If you do not have a user or device id (e.g., your app will ask the user to select a login account), you can use <code>setUniqueUserId()</code> and <code>setDeviceId()</code> at a later time.
+<p>Beyond these, the loggers that transmit data also require:
+<ol>
+	<li><code>getPostKey()</code>: a String that will be used as a key when transmitting the data to the server.
+	<li><code>getPostParameters()</code>: a map of key-value pairs that contain any additional data that should be sent when transmitting data; e.g., an API key.
+	<li><code>getDataPostURL()</code>: a String of the URL that you are sending data to.
+	<li><code>getSuccessfulPostResponse()</code>: the String that the server will reply with when it has successfully received some data.
+</ol>
+<p>And the loggers that store data also require:
+<ol>
+	<li><code>getStorageName()</code>: the name for the file system directory or database that will hold your data.
+</ol>
+
+<h3>2. Log Data</h3>
+<p>You can log data with this library by providing a tag for that data.
+<pre>
+<code>String tag = "Greeting";
+String data = "Hello!";
+
+AbstractDataLogger logger = new MyDataLogger(context);
+logger.log(tag, data);</code>
+</pre>
+<p>This will create a JSON object log entry, and automatically add the user's details and the current time.
+
+<p>When logging sensor data directly, the tag is the sensor's name; you can log the data directly by:
+<pre>
+<code>SensorData d = ...;
+logger.logSensorData(d);</code>
+</pre>
+
+<h3>4. Upload Data</h3>
+<p>To upload data, select a data logger that will do so (either the ImmediateTransfer or AsyncTransfer logger). Your app will require permissions to use the Internet, and, if you are using the AsyncTransferLogger, permission to check the network state; you will also have to implement methods that tell gives the logger details to use when posting data.
+
+<p>If you are using the asynchronous logger and would like to manually trigger a data upload, use the <code>postAllStoredData()</code> method.
+
+      </section>
+      <footer>
+        <p><small>Hosted on GitHub Pages <br>Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>

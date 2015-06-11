@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>ES Library Documentation by xsenselabs</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>ES Libraries Documentation</h1>
+        <p>Online documentation:
+	<br /><a href="index.html">Home</a>
+	<br /><a href="sensors.html">What Sensor Data?</a>
+        <br /><a href="android.html">Collecting Sensor Data</a>
+        <br /><a href="format.html">Formatting Sensor Data</a>
+        <br /><a href="data.html">Store/Transfer Data</a>
+	<br /><a href="research.html">Research</a>
+	<br /><a href="https://github.com/xsenselabs">Project Github Page</a></p>
+
+      </header>
+      <section>
+<h1>Formatting Sensor Data</h1>
+
+<h3>1. Start with the Data Formatter</h3>
+<p>You can get a formatter by calling the <code>getJSONFormatter()</code> method in the <code>DataFormatter</code> class. This method's parameters are:
+<ul>
+	<li>Your app's context, and
+	<li>The sensor id for your sensor, defined in the <code>SensorUtils</code> class.
+</ul>
+
+<p>For example, to get a formatter for accelerometer data:
+
+<pre>
+<code>AccelerometerFormatter f = (AccelerometerFormatter) DataFormatter.getJSONFormatter(context, SensorUtils.SENSOR_TYPE_ACCELEROMETER);</code>
+</pre>
+
+<p>You can also use the <code>getSensorType()</code> method in a <code>SensorData</code> object.
+<pre>
+<code>SensorData d = sm.getDataFromSensor(SensorUtils.SENSOR_TYPE_ACCELEROMETER);
+JSONFormatter f = DataFormatter.getJSONFormatter(context, d.getSensorType());</code>
+</pre>
+
+<h3>2. Convert Sensor Data to a JSON String</h3>
+<p>To convert your <code>SensorData</code> object to a JSON string, use the <code>toString()</code> method. The following example builds on the above to format the accelerometer data:
+
+<pre>
+<code>String s = f.toString(d);</code>
+</pre>
+
+<h4>a. JSON Data Contents</h4>
+<p>All JSON formatted data includes the following keys:</p>
+
+<pre><code>{
+	"sensorType": "string",
+	"senseStartTime":"HH:mm:ss:SSS dd MM yyyy Z z",
+	"senseStartTimeMillis":0,
+	"userid":"string",
+	"deviceid":"string",
+}</code></pre>
+
+<p>Where:
+<ul>
+	<li><code>sensorType</code>: is the string identifier for the sensor, as defined in the <code>SensorUtils</code> class.
+	<li><code>senseStartTime</code>: is the string-formatted time that sensing from this sensor began (measured on the device).
+	<li><code> senseStartTimeMillis </code>: is the time in milliseconds that sensing from this sensor began (measured on the device).
+	<li><code>userid</code>: is the string user-id that you have given the <a href="data.html">data manager</a>.
+	<li><code>deviceid</code>: is string device-id that you have given the <a href="data.html">data manager</a>.
+</ul>
+<p>You can refer to the <a href="sensors.html">sensors page</a> to see sample JSON for each sensor.
+
+
+<h3>3. Convert a JSON String to Sensor Data</h3>
+<p>To convert a JSON string back to a <code>SensorData</code> object, use the <code>toSensorData()</code> method. The following example builds on the above to format the accelerometer data:
+
+<pre>
+<code>AccelerometerData d2 = (AccelerometerData) f.toSensorData(s);</code>
+</pre>
+      </section>
+      <footer>
+        <p><small>Hosted on GitHub Pages <br>Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
