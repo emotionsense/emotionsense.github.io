@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>ES Library Documentation by xsenselabs</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>ES Libraries Documentation</h1>
+        <p>Online documentation:
+	<br /><a href="index.html">Home</a>
+	<br /><a href="sensors.html">What Sensor Data?</a>
+        <br /><a href="android.html">Collecting Sensor Data</a>
+        <br /><a href="">Formatting Sensor Data</a>
+        <br /><a href="">Storing and Transferring Data</a>
+	<br /><a href="">Research</a>
+	<br /><a href="https://github.com/xsenselabs">Project Github Page</a></p>
+
+      </header>
+      <section>
+
+<h1>Collecting Sensor Data</h1>
+
+<h3>1. Start with the Sensor Manager</h3>
+<p>All control of sensor data collection is done via the <a href="https://github.com/xsenselabs/SensorManager/blob/master/src/com/ubhave/sensormanager/ESSensorManager.java" target="_blank">ES Sensor Manager singleton</a>.
+
+<pre>
+<code>ESSensorManager sm = ESSensorManager.getSensorManager(context);</code>
+</pre>
+
+<h3>2. Get a sample of sensor data</h3>
+<p>To collect a single sample of sensor data using preconfigured settings, use the <code>getDataFromSensor(int sensorId)</code> method. This blocking call returns an object of type <code>SensorData</code>, which can then be cast to the specific kind of sensor data you have sampled. Each sensor in the library is assigned a unique numeric identifier: these are listed in <code>SensorUtils.java</code>.
+
+<p>Here is an example of getting a sample from the accelerometer:
+
+<pre>
+<code>AccelerometerData d = (AccelerometerData) sm.getDataFromSensor(SensorUtils.SENSOR_TYPE_ACCELEROMETER);</code>
+</pre>
+
+<h3>3. Subscribe to a sensor's data</h3>
+<p>To regularly receive data from a sensor, issue a subscription for it. Subscribing to a sensor using the ES Sensor Manager requires including the battery permissions.
+
+<h4>a. Implement a sensor listener</h4>
+<pre>
+<code>public class ExampleSensorListener implements SensorDataListener
+{
+	public void onDataSensed(SensorData data)
+	{
+		// This method will be called by the ES Sensor Manager when it has new data to publish
+		// and lets you decide what actions to take with that data.
+	}
+
+	public void onCrossingLowBatteryThreshold(boolean isBelowThreshold)
+	{
+		// This method will be called by the ES Sensor Manager when the phone's battery falls
+		// below a pre-defined, configurable threshold, and again when the phone has been charged
+		// above that threshold.
+	}
+}</code>
+</pre>
+
+<h4>b. Subscribe to the sensor</h4>
+<p>Here is an example of subscribing to receive accelerometer data:
+<pre>
+<code>SensorDataListener listener = new ExampleSensorListener();
+int id = sm.subscribeToSensorData(SensorUtils.SENSOR_TYPE_ACCELEROMETER, listener);</code>
+</pre>
+<p>The integer that is returned from this method is your subscription id.
+
+<h4>c. Pause and resume your subscription</h4> 
+<p>If needed, you can pause and resume your subscription using your subscription id.
+<pre>
+<code>sm.pauseSubscription(id);
+sm.unPauseSubscription(id);</code>
+</pre>
+
+<h4>d. Unsubscribe from the sensor</h4>
+<p>When you have finished with your subscription, you can unsubscribe:
+<pre>
+<code>sm.unsubscribeFromSensorData(id);</code>
+</pre>
+
+<h3>4. Configure the Sensor Manager</h3>
+<p>The ES Sensor Manager instance stores your current preferences as a set of key-value pairs.
+
+<h4>a. Get and set global configuration variables</h4>
+<p>At a global level, you can control the ES Sensor Manager's low battery threshold, whether it should print Log.d status messages, and whether it should acquire a wake lock when it begins sensing.
+
+<p>For example, to get and then set the low battery threshold:
+
+<pre><code>int lowBatteryThresh = (int) sm.getParameter(GlobalConfig.LOW_BATTERY_THRESHOLD);
+sm.setGlobalConfig(GlobalConfig.LOW_BATTERY_THRESHOLD, 50);</code>
+</pre>
+
+<h4>b. Get and set sensor-specific configuration variables</h4>
+<p>At the sensor level, you can set a variety of parameters that are determined by the sensor's type (e.g., pull or push).
+
+<p>For example, to get the accelerometer's sensing window length:
+<pre><code>long l = (long) sm.getSensorConfig(SensorUtils.SENSOR_TYPE_ACCELEROMETER,
+	PullSensorConfig.SENSE_WINDOW_LENGTH_MILLIS);</code></pre>
+
+<p>And to set it to 4 seconds:
+<pre><code>sm.setSensorConfig(SensorUtils.SENSOR_TYPE_ACCELEROMETER,
+	PullSensorConfig.SENSE_WINDOW_LENGTH_MILLIS, 4 * 1000L);</code>
+</pre>
+<p>For a full list of the parameters you can set, please refer to the <a href="" target="_blank">config</a> package in the library.
+
+      </section>
+      <footer>
+        <p><small>Hosted on GitHub Pages <br>Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>

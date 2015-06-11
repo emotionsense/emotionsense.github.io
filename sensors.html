@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>ES Library Documentation by xsenselabs</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>ES Libraries Documentation</h1>
+        <p>Online documentation:
+	<br /><a href="index.html">Home</a>
+	<br /><a href="sensors.html">What Sensor Data?</a>
+        <br /><a href="android.html">Collecting Sensor Data</a>
+        <br /><a href="">Formatting Sensor Data</a>
+        <br /><a href="">Storing and Transferring Data</a>
+	<br /><a href="">Research</a>
+	<br /><a href="https://github.com/xsenselabs">Project Github Page</a></p>
+
+      </header>
+      <section>
+<h1>Sensor Data</h1>
+<p>We adopt a very broad definition of “sensor,” taking it to mean <i>any signal that can be unobtrusively captured from the smartphone device</i>. The full list of the sensors we currently support are:</p>
+
+<h3>Pull Sensors</h3>
+<p>All sensors that the Android OS does not capture data from until requested to do so by an application. They currently include the accelerometer, location (both coarse, from the nearest cell-tower, and fine, from the GPS), and microphone amplitude levels. They further support querying for Wi-Fi, Bluetooth, and active application scan results, as well as querying the SMS and call logs.</p>
+<ul>
+	<li>Accelerometer
+	<li>Bluetooth
+	<li>Application Log
+	<li>Call Log
+	<li>Gyroscope
+	<li>Location
+	<li>Magnetic Field
+	<li>Microphone
+	<li>Phone Radio
+	<li>SMS Log
+	<li>Wi-Fi Scan
+</ul>
+
+<h3>Push Sensors</h3>
+<p>The Android OS publishes data about particular events that applications can receive: this set of sensors receives this information on behalf of an application, and includes: the battery (energy levels), connection state (whether the phone is connected to a Wi-Fi or mobile network and if it is in roaming mode), the proximity sensor (near/far events), screen on/off events, phone calls starting/ending, and SMS sent/received events.</p>
+<ul>
+	<li>Battery
+	<li>Connection State
+	<li>Connection Strength
+	<li>Passive Location
+	<li>Phone State
+	<li>Proximity
+	<li>Screen Event
+	<li>SMS Event
+</ul>
+
+
+<h3>Environment Sensors</h3>
+<ul>
+	<li>Temperature
+	<li>Humidity
+	<li>Light
+</ul>
+
+      </section>
+      <footer>
+        <p><small>Hosted on GitHub Pages <br>Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
