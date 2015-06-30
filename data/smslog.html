@@ -27,13 +27,28 @@
 
       </header>
       <section>
-<h1>Sensor Name</h1>
-<p>A brief description of the sensor.</p>
+<h1>SMS Log</h1>
+<p>This sensor will query the device's SMS logs and return an anonymised set of events.</p>
 
-<p>This sensor requires the XX permission. The JSON format for a sample from this sensor is:</p>
+<p>This sensor requires the 'read sms' permission. The JSON format for a sample from this sensor is:</p>
 
 <pre><code>{
-	"dataType":"sensorName"
+	"userid":"test-user-id",
+	"deviceid":"test-device-id",
+	"senseStartTime":"14:23:59:654 30 06 2015 +0100 GMT+01:00",
+	"senseStartTimeMillis":1435670639654,
+	"dataType":"SMSContentReader",
+	"contentList":
+	[
+		{
+			"bodyWordCount":"8",
+			"address":"hash-of-address",
+			"date":"1422900027883",
+			"bodyLength":"47",
+			"local_time_when_sensed":"Mon Feb 02 18:00:27 GMT+00:00 2015",
+			"type":"inbox | sent"
+		}
+	]
 }</pre></code>
 
       </section>

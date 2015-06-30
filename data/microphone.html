@@ -27,13 +27,21 @@
 
       </header>
       <section>
-<h1>Sensor Name</h1>
-<p>A brief description of the sensor.</p>
+<h1>Microphone</h1>
+<p>The microphone sensor records a snippet of audio and returns the amplitude levels of noise around the device.</p>
 
-<p>This sensor requires the XX permission. The JSON format for a sample from this sensor is:</p>
+<p>This sensor requires the 'record audio' permission. The JSON format for a sample from this sensor is:</p>
 
 <pre><code>{
-	"dataType":"sensorName"
+	"userid":"test-user-id",
+	"deviceid":"test-device-id",
+	"senseStartTime":"14:16:30:449 30 06 2015 +0100 GMT+01:00",
+	"senseStartTimeMillis":1435670190449,
+	"dataType":"Microphone",
+	"amplitude":[0,7,23,32, ...],
+	"sensorTimeStamps":[1435670190616,1435670190667,1435670190718,1435670190769,... ],
+	"media_file":"\/data\/data\/com.emotionsense.demo.data\/files\/audio.3gpp",
+	"sampleLengthMillis":5000
 }</pre></code>
 
       </section>

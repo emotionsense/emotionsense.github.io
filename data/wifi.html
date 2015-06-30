@@ -27,13 +27,29 @@
 
       </header>
       <section>
-<h1>Sensor Name</h1>
-<p>A brief description of the sensor.</p>
+<h1>WiFi</h1>
+<p>This sensor initiates and returns the result of performing a WiFi scan.</p>
 
-<p>This sensor requires the XX permission. The JSON format for a sample from this sensor is:</p>
+<p>This sensor requires permissions to access and change the WiFi and network state. The JSON format for a sample from this sensor is:</p>
 
 <pre><code>{
-	"dataType":"sensorName"
+	"userid":"test-user-id",
+	"deviceid":"test-device-id",
+	"senseStartTime":"14:28:25:734 30 06 2015 +0100 GMT+01:00",
+	"senseStartTimeMillis":1435670905734,
+	"dataType":"WiFi",
+	"unavailable":false,
+	"scanResult":
+	[
+		{
+			"ssid":"",
+			"bssid":"00:00:00:00:00:00",
+			"capabilities":"[ESS]",
+			"level":-86,
+			"frequency":5200
+		}
+	],
+	"senseCycles":1
 }</pre></code>
 
       </section>

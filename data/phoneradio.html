@@ -27,13 +27,26 @@
 
       </header>
       <section>
-<h1>Sensor Name</h1>
-<p>A brief description of the sensor.</p>
+<h1>Phone Radio</h1>
+<p>The phone radio sensor returns information about the towers that are nearby the device.</p>
 
-<p>This sensor requires the XX permission. The JSON format for a sample from this sensor is:</p>
+<p>This sensor requires the 'access coarse location' permission. The JSON format for a sample from this sensor is:</p>
 
 <pre><code>{
-	"dataType":"sensorName"
+	"userid":"test-user-id",
+	"deviceid":"test-device-id",
+	"senseStartTime":"14:20:16:719 30 06 2015 +0100 GMT+01:00",
+	"senseStartTimeMillis":1435670416719,
+	"dataType":"PhoneRadio",
+	"phoneRadioResult":
+	[
+		{
+			"mcc":"234",
+			"mnc":"30",
+			"lac":10721,
+			"cid":2712064
+		}
+	]
 }</pre></code>
 
       </section>

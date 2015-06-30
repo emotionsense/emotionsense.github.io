@@ -27,13 +27,22 @@
 
       </header>
       <section>
-<h1>Sensor Name</h1>
-<p>A brief description of the sensor.</p>
+<h1>Magnetic Field</h1>
+<p>The magnetic field sensor is a <a href="http://developer.android.com/guide/topics/sensors/sensors_position.html#sensors-pos-mag">position sensor</a> that measures changes in the earth's magnetic field around the device.</p>
 
-<p>This sensor requires the XX permission. The JSON format for a sample from this sensor is:</p>
+<p>This sensor does not currently require any specific permission. The JSON format for a sample from this sensor is:</p>
 
 <pre><code>{
-	"dataType":"sensorName"
+	"userid":"user-id",
+	"deviceid":"device-id",
+	"senseStartTime":"14:10:11:895 30 06 2015 +0100 GMT+01:00",
+	"senseStartTimeMillis":1435669811895,
+	"dataType":"MagneticField",
+	"xAxis":[38.29600143432617,37.36199951171875,...],
+	"yAxis":[48.145999908447266,48.145999908447266,...],
+	"zAxis":[34.027000427246094,34.393001556396484,...],
+	"sensorTimeStamps":[1435669811923,1435669812118,...],
+	"sampleLengthMillis":8000
 }</pre></code>
 
       </section>
