@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>ES Library Documentation by emotionsense</title>
+
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>ES Libraries Documentation</h1>
+        <p>Online documentation:
+	<br /><a href="../index.html">Home</a>
+	<br /><a href="../sensors.html">What Sensor Data?</a>
+        <br /><a href="../android.html">Collecting Sensor Data</a>
+        <br /><a href="../format.html">Formatting Sensor Data</a>
+        <br /><a href="../data.html">Store/Transfer Data</a>
+	<br /><a href="../research.html">Research</a>
+	<br /><a href="https://github.com/emotionsense">Project Github Page</a></p>
+
+      </header>
+      <section>
+<h1>Accelerometer</h1>
+<p>The accelerometer is a <a href="http://developer.android.com/guide/topics/sensors/sensors_motion.html#sensors-motion-accel">motion sensor</a> that measures the acceleration of the device.</p>
+
+<p>This sensor does not currently require any specific permission. The JSON format for a sample from this sensor is:</p>
+
+<pre><code>{
+	"userid":"user-id",
+	"deviceid":"device-id",
+	"senseStartTime":"12:42:39:031 30 06 2015 +0100 GMT+01:00",
+	"senseStartTimeMillis":1435664559031,
+	"dataType":"Accelerometer",
+	"xAxis":[0.20949265360832214,0.20949265360832214,...],
+	"yAxis":[-0.05626374110579491,-0.05626374110579491,...],
+	"zAxis":[9.548674583435059,9.548674583435059,...],
+	"sensorTimeStamps":[1435664559191,1435664559191,...],
+	"sampleLengthMillis":8000
+}</pre></code>
+
+      </section>
+      <footer>
+        <p><small>Hosted on GitHub Pages <br>Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
