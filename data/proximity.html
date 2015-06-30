@@ -27,13 +27,19 @@
 
       </header>
       <section>
-<h1>Sensor Name</h1>
-<p>A brief description of the sensor.</p>
+<h1>Proximity</h1>
+<p>The proximity sensor measures whether there is anything close to the front of the device.</p>
 
-<p>This sensor requires the XX permission. The JSON format for a sample from this sensor is:</p>
+<p>This sensor does not require any permissions. The JSON format for a sample from this sensor is:</p>
 
 <pre><code>{
-	"dataType":"sensorName"
+	"userid":"test-user-id",
+	"deviceid":"test-device-id",
+	"senseStartTime":"16:20:47:489 30 06 2015 +0100 GMT+01:00",
+	"senseStartTimeMillis":1435677647489,
+	"dataType":"Proximity",
+	"distance":8,
+	"maxRange":8
 }</pre></code>
 
       </section>

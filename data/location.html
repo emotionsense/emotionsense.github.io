@@ -28,9 +28,9 @@
       </header>
       <section>
 <h1>Location</h1>
-<p>The location sensor finds the latitude/longitude of the device.</p>
+<p>The location sensor finds the latitude/longitude of the device. There are two sensors in the library for this: the pull <a href="https://github.com/emotionsense/SensorManager/blob/master/src/com/ubhave/sensormanager/sensors/pull/LocationSensor.java">Location</a> sensor and the push <a href="https://github.com/emotionsense/SensorManager/blob/master/src/com/ubhave/sensormanager/sensors/push/PassiveLocationSensor.java">Passive Location</a> sensor.</p>
 
-<p>This sensor requires either the 'access coarse location' or 'access fine location' permission. The JSON format for a sample from this sensor is:</p>
+<p>This sensor requires either the 'access coarse location' or 'access fine location' permission. The JSON format for a sample from these sensors are:</p>
 
 <pre><code>{
 	"userid":"user-id",
@@ -52,6 +52,21 @@
 		}
 	],
 	"configAccuracy":"LOCATION_ACCURACY_COARSE"
+}</pre></code>
+
+<pre><code>{
+	"userid":"test-user-id",
+	"deviceid":"test-device-id",
+	"senseStartTime":"16:25:04:729 30 06 2015 +0100 GMT+01:00",
+	"senseStartTimeMillis":1435677904729,
+	"dataType":"PassiveLocation",
+	"latitude":0,
+	"longitude":0,
+	"accuracy":36.00299835205078,
+	"speed":0,
+	"bearing":0,
+	"provider":"network",
+	"time":1435677904453
 }</pre></code>
 
       </section>

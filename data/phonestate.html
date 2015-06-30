@@ -27,13 +27,19 @@
 
       </header>
       <section>
-<h1>Sensor Name</h1>
-<p>A brief description of the sensor.</p>
+<h1>Phone State</h1>
+<p>The phone state sensor captures events that change the phone's state. These include: incoming calls, changes to the device's cell location, changes to the direction of data traffic on the data connection, changes to the data connection state, and changes to the network service state.</p>
 
-<p>This sensor requires the XX permission. The JSON format for a sample from this sensor is:</p>
+<p>This sensor requires permissions for coarse location access, processing outgoing calls, and reading the phone state. The JSON format for a sample from this sensor is:</p>
 
 <pre><code>{
-	"dataType":"sensorName"
+	"userid":"test-user-id",
+	"deviceid":"test-device-id",
+	"senseStartTime":"16:24:02:606 30 06 2015 +0100 GMT+01:00",
+	"senseStartTimeMillis":1435677842606,
+	"dataType":"PhoneState",
+	"eventType":5444,
+	"data":"STATE_IN_SERVICE 0 0 home  LTE LTE CSS not supported -1 -1 RoamInd=-1 DefRoamInd=-1 EmergOnly=false"
 }</pre></code>
 
       </section>

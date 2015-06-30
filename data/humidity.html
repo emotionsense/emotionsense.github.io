@@ -27,13 +27,18 @@
 
       </header>
       <section>
-<h1>Sensor Name</h1>
-<p>A brief description of the sensor.</p>
+<h1>Humidity</h1>
+<p>The humidity sensor is an <a href="http://developer.android.com/guide/topics/sensors/sensors_environment.html#sensors-using-temp">environment sensor</a> that measures ambient humidity.</p>
 
-<p>This sensor requires the XX permission. The JSON format for a sample from this sensor is:</p>
+<p>This sensor does not require any permissions. The JSON format for a sample from this sensor is:</p>
 
 <pre><code>{
-	"dataType":"sensorName"
+	"userid":"test-user-id",
+	"deviceid":"test-device-id",
+	"senseStartTime":"16:20:47:906 30 06 2015 +0100 GMT+01:00",
+	"senseStartTimeMillis":1435677647906,
+	"dataType":"Humidity",
+	"humidity":39.607608795166016
 }</pre></code>
 
       </section>

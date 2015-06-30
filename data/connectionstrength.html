@@ -27,13 +27,18 @@
 
       </header>
       <section>
-<h1>Temperature</h1>
-<p>A brief description of the sensor.</p>
+<h1>Connection Strength</h1>
+<p>The connection strength sensor listens for changes in the cellular network signal strength.</p>
 
-<p>This sensor requires the XX permission. The JSON format for a sample from this sensor is:</p>
+<p>This sensor requires permissions to read the phone's state. The JSON format for a sample from this sensor is:</p>
 
 <pre><code>{
-	"dataType":"sensorName"
+	"userid":"test-user-id",
+	"deviceid":"test-device-id",
+	"senseStartTime":"16:15:07:545 30 06 2015 +0100 GMT+01:00",
+	"senseStartTimeMillis":1435677307545,
+	"dataType":"ConnectionStrength",
+	"strength":0
 }</pre></code>
 
       </section>

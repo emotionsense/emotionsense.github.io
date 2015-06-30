@@ -27,13 +27,24 @@
 
       </header>
       <section>
-<h1>Sensor Name</h1>
-<p>A brief description of the sensor.</p>
+<h1>Battery</h1>
+<p>The battery sensor returns information about the device's current energy state.</p>
 
-<p>This sensor requires the XX permission. The JSON format for a sample from this sensor is:</p>
+<p>This sensor requires the 'battery stats' permission. The JSON format for a sample from this sensor is:</p>
 
 <pre><code>{
-	"dataType":"sensorName"
+	"userid":"test-user-id",
+	"deviceid":"test-device-id",
+	"senseStartTime":"15:46:50:277 30 06 2015 +0100 GMT+01:00",
+	"senseStartTimeMillis":1435675610277,
+	"dataType":"Battery",
+	"level":70,
+	"scale":100,
+	"temperature":337,
+	"voltage":4010,
+	"plugged":2,
+	"status":"BATTERY_STATUS_CHARGING",
+	"health":"BATTERY_HEALTH_GOOD"
 }</pre></code>
 
       </section>
