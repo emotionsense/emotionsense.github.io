@@ -27,13 +27,29 @@
 
       </header>
       <section>
-<h1>Sensor Name</h1>
-<p>A brief description of the sensor.</p>
+<h1>Application Log</h1>
+<p>This sensor allows you to query for the apps that have been <a href="http://developer.android.com/reference/android/app/ActivityManager.html#getRunningTasks%28int%29">recently run on the device</a>.</p>
 
-<p>This sensor requires the XX permission. The JSON format for a sample from this sensor is:</p>
+<p><b>WARNING: As of Android Lollipop, this method is no longer available to third party applications.</b></p>
+
+<p>This sensor requires the Android get tasks permission. The JSON format for a sample from this sensor is:</p>
 
 <pre><code>{
-	"dataType":"sensorName"
+	"userid":"user-id",
+	"deviceid":"device-id",
+	"senseStartTime":"13:41:44:919 30 06 2015 +0100 GMT+01:00",
+	"senseStartTimeMillis":1435668104919,
+	"dataType":"Application",
+	"applicationResult":
+	[
+		{
+			"running_activities":"1",
+			"num_activities":"1",
+			"base_activity":"com.emotionsense.demo.data\/.MainActivity",
+			"application_label":"Data Manager Demo"
+		}
+	],
+	"senseCycles":1
 }</pre></code>
 
       </section>

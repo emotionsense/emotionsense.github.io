@@ -27,13 +27,31 @@
 
       </header>
       <section>
-<h1>Sensor Name</h1>
-<p>A brief description of the sensor.</p>
+<h1>Location</h1>
+<p>The location sensor finds the latitude/longitude of the device.</p>
 
-<p>This sensor requires the XX permission. The JSON format for a sample from this sensor is:</p>
+<p>This sensor requires either the 'access coarse location' or 'access fine location' permission. The JSON format for a sample from this sensor is:</p>
 
 <pre><code>{
-	"dataType":"sensorName"
+	"userid":"user-id",
+	"deviceid":"device-id",
+	"senseStartTime":"14:04:14:087 30 06 2015 +0100 GMT+01:00",
+	"senseStartTimeMillis":1435669454087,
+	"dataType":"Location",
+	"locations":
+	[
+		{
+			"latitude":0,
+			"longitude":0,
+			"accuracy":30.45199966430664,
+			"speed":0,
+			"bearing":0,
+			"provider":"network",
+			"time":1435669478189,
+			"local_time":"14:04:38:189 30 06 2015 +0100 GMT+01:00"
+		}
+	],
+	"configAccuracy":"LOCATION_ACCURACY_COARSE"
 }</pre></code>
 
       </section>

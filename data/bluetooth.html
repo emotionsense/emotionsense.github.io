@@ -30,10 +30,29 @@
 <h1>Bluetooth</h1>
 <p>The bluetooth sensor allows you to <a href="http://developer.android.com/guide/topics/connectivity/bluetooth.html">scan for nearby devices</a>.</p>
 
-<p>This sensor requires the XX permission. The JSON format for a sample from this sensor is:</p>
+<p>This sensor requires the Bluetooth and Bluetooth Admin permission. The JSON format for a sample from this sensor is:</p>
 
 <pre><code>{
-	"dataType":"sensorName"
+	"userid":"user-id",
+	"deviceid":"device-id",
+	"senseStartTime":"13:33:29:698 30 06 2015 +0100 GMT+01:00",
+	"senseStartTimeMillis":1435667609698,
+	"dataType":"Bluetooth",
+	"devices":
+	[
+		{
+			"address":"the:device:address",
+			"rssi":-78,
+			"timeStamp":1435667612898
+		},
+		{
+			"address":"the:device:address",
+			"name":"the-device-name",
+			"rssi":-57,
+			"timeStamp":1435667621992
+		}
+	],
+	"senseCycles":1
 }</pre></code>
 
       </section>

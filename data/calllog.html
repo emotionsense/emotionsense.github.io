@@ -27,13 +27,27 @@
 
       </header>
       <section>
-<h1>Sensor Name</h1>
-<p>A brief description of the sensor.</p>
+<h1>Call Log</h1>
+<p>This sensor will query the device's call logs and return an anonymised set of call events.</p>
 
-<p>This sensor requires the XX permission. The JSON format for a sample from this sensor is:</p>
+<p>This sensor requires the 'read contacts' and 'read call log' permissions. The JSON format for a sample from this sensor is:</p>
 
 <pre><code>{
-	"dataType":"sensorName"
+	"userid":"user-id",
+	"deviceid":"device-id",
+	"senseStartTime":"13:51:07:639 30 06 2015 +0100 GMT+01:00",
+	"senseStartTimeMillis":1435668667639,
+	"dataType":"CallContentReader",
+	"contentList":
+	[
+		{
+			"number":"hash-of-number",
+			"date":"1402587637523",
+			"local_time_when_sensed":"Thu Jun 12 16:40:37 BST 2014",
+			"duration":"duration-in-minutes",
+			"type":"missed | outgoing | incoming"
+		}
+	]
 }</pre></code>
 
       </section>
