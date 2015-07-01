@@ -28,27 +28,18 @@
 
       </header>
       <section>
-<h1>Call Log</h1>
-<p>This sensor will query the device's call logs and return an anonymised set of call events.</p>
+<h1>Step Counter</h1>
+<p>The step counter sensor returns the number of steps that the <a href="http://developer.android.com/reference/android/hardware/Sensor.html#TYPE_STEP_COUNTER">device has sensed since the last boot</a>.</p>
 
-<p>This sensor requires the 'read contacts' and 'read call log' permissions. The JSON format for a sample from this sensor is:</p>
+<p>This sensor does not require any permissions. The JSON format for a sample from this sensor is:</p>
 
 <pre><code>{
-	"userid":"user-id",
-	"deviceid":"device-id",
-	"senseStartTime":"13:51:07:639 30 06 2015 +0100 GMT+01:00",
-	"senseStartTimeMillis":1435668667639,
-	"dataType":"CallContentReader",
-	"contentList":
-	[
-		{
-			"number":"hash-of-number",
-			"date":"1402587637523",
-			"local_time_when_sensed":"Thu Jun 12 16:40:37 BST 2014",
-			"duration":"duration-in-minutes",
-			"type":"missed | outgoing | incoming"
-		}
-	]
+	"userid":"test-user-id",
+	"deviceid":"test-device-id",
+	"senseStartTime":"14:20:09:700 01 07 2015 +0100 GMT+01:00",
+	"senseStartTimeMillis":1435756809700,
+	"dataType":"StepCounter",
+	"stepCount":7921
 }</pre></code>
 
       </section>

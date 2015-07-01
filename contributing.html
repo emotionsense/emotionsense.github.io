@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>ES Library Documentation by emotionsense</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>ES Libraries Documentation</h1>
+        <p>Online documentation:
+	<br /><a href="index.html">Home</a>
+	<br /><a href="sensors.html">What Sensor Data?</a>
+        <br /><a href="android.html">Collecting Sensor Data</a>
+        <br /><a href="format.html">Formatting Sensor Data</a>
+        <br /><a href="data.html">Store/Transfer Data</a>
+	<br /><a href="research.html">Research</a>
+        <br /><a href="contributing.html">Contributing</a>
+	<br /><a href="https://github.com/emotionsense">Project Github Page</a></p>
+
+      </header>
+      <section>
+<h1>Contributing Code</h1>
+<p>There are a number of steps that you need to take to add to these open-source libraries. First, review <a href="https://guides.github.com/activities/contributing-to-open-source/">Github's guide</a> to contributing to an open-source project.</p>
+
+<h3>Adding a Sensor</h3>
+<p>To add a new sensor, you need to edit the <a href="https://github.com/emotionsense/SensorManager">SensorManager</a> and <a href="https://github.com/emotionsense/SensorDataManager">SensorDataManager</a> libraries. To implement your sensor, you'll need to: </p>
+<ol>
+	<li>Decide whether your sensor is best implemented as a push (<a href="https://github.com/emotionsense/SensorManager/blob/master/src/com/ubhave/sensormanager/sensors/push/AbstractPushSensor.java">AbstractPushSensor</a>), pull (<a href="https://github.com/emotionsense/SensorManager/blob/master/src/com/ubhave/sensormanager/sensors/pull/AbstractPullSensor.java">AbstractPullSensor</a>), or environment (<a href="https://github.com/emotionsense/SensorManager/blob/master/src/com/ubhave/sensormanager/sensors/env/AbstractEnvironmentSensor.java">AbstractEnvironmentSensor</a>) sensor. This will determine where your code will be implemented and what AbstractSensor type it will inherit from.</a>
+	<li>Implement the data structure that will store your sensor's data, in the <a href="https://github.com/emotionsense/SensorManager/tree/master/src/com/ubhave/sensormanager/data">data package</a>. Implement a processor that creates an instance of your sensor's data in the <a href="https://github.com/emotionsense/SensorManager/tree/master/src/com/ubhave/sensormanager/process">process package</a>.
+	<li>Implement a default configuration for your sensor in the <a href="https://github.com/emotionsense/SensorManager/tree/master/src/com/ubhave/sensormanager/config">config package</a>. You will also need to add an entry to <code>getDefaultConfig()</code> in <a href="https://github.com/emotionsense/SensorManager/blob/master/src/com/ubhave/sensormanager/config/SensorConfig.java">SensorConfig</a>.
+	<li>The ES Sensor Manager needs to be able to find your sensor. Add an int SENSOR_TYPE and String SENSOR_NAME to <a href="https://github.com/emotionsense/SensorManager/blob/master/src/com/ubhave/sensormanager/sensors/SensorUtils.java">SensorUtils</a>. Add an entry for your sensor in <a href="https://github.com/emotionsense/SensorManager/blob/master/src/com/ubhave/sensormanager/sensors/SensorEnum.java">SensorEnum</a>.
+	<li>Add a data formatter to convert your sensor data instance into JSON in the data manager <a href="https://github.com/emotionsense/SensorDataManager/tree/master/src/com/ubhave/dataformatter">data formatter package</a>.
+	<li>The data formatter needs to be able to find your formatter. Add an entry in <code>getJSONFormatter()</code> in <a href="https://github.com/emotionsense/SensorDataManager/blob/master/src/com/ubhave/dataformatter/DataFormatter.java">DataFormatter.java</a>.
+	<li>Test your sensor. You may want to modify and use the <a href="https://github.com/emotionsense/DemoDataManager">Demo App</a>.
+	<li>Update the <a href="sensors.html">sensors documentation</a>.
+	
+</ol>
+      </section>
+      <footer>
+        <p><small>Hosted on GitHub Pages <br>Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
