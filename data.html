@@ -35,7 +35,6 @@
 
 <ol>
 	<li>The <code>AbstractStoreOnlyLogger</code>, which will only store any captured data.
-	<li>The <code>AbstractImmediateTransferLogger</code>, which will attempt to transfer any logged data as soon as it receives it.
 	<li>The <code>AbstractAsyncTransferLogger</code>, which will store data that it receives and then regularly attempt to batch upload compressed files of data.
 </ol>
 
@@ -49,7 +48,6 @@
 <h4>a. Pick a storage type</h4>
 <p>All of the constructors for the logger types require you to specify a storage type. This can be one of:
 <ol>
-	<li><code>DataStorageConfig.STORAGE_TYPE_NONE</code>, if you are using the immediate transfer logger that does not store data.
 	<li><code>DataStorageConfig.STORAGE_TYPE_DB</code> to store the data in a local SQLite database.
 	<li><code>DataStorageConfig.STORAGE_TYPE_FILES</code> to store the data in the file system; your app must have the permission to write to the external storage.
 </ol>
@@ -72,7 +70,7 @@
 </ol>
 <p>And the loggers that store data also require:
 <ol>
-	<li><code>getStorageName()</code>: the name for the file system directory or database that will hold your data.
+	<li><code>getStorageName()</code>: the name for the file system directory that will hold your data.
 </ol>
 
 <h3>2. Log Data</h3>
@@ -93,9 +91,9 @@ logger.logSensorData(d);</code>
 </pre>
 
 <h3>4. Upload Data</h3>
-<p>To upload data, select a data logger that will do so (either the ImmediateTransfer or AsyncTransfer logger). Your app will require permissions to use the Internet, and, if you are using the AsyncTransferLogger, permission to check the network state; you will also have to implement methods that tell gives the logger details to use when posting data.
+<p>To upload data, select the AsyncTransfer logger. Your app will require permissions to use the Internet and to check the network state; you will also have to implement methods that tell gives the logger details to use when posting data.
 
-<p>If you are using the asynchronous logger and would like to manually trigger a data upload, use the <code>postAllStoredData()</code> method.
+<p>To manually trigger a data upload, use the <code>postAllStoredData()</code> method; you will have to implement the <a href="https://github.com/emotionsense/SensorDataManager/blob/encryption/src/com/ubhave/datahandler/transfer/DataUploadCallback.java">DataUploadCallback</a> interface.
 
       </section>
       <footer>
